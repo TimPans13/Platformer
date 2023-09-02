@@ -15,7 +15,8 @@ public class WinnerScript : MonoBehaviour
             Time.timeScale = 0f;
             PauseButton.SetActive(false);
             Lives.SetActive(false);
-            StarsCounter();       
+            StarsCounter();
+            MainMenu.unlockedLevel++;
         }
     }
 

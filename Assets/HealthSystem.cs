@@ -41,6 +41,7 @@ public class HealthSystem : MonoBehaviour//отвечает за здоровье и механику проиг
                 LoserPanel.SetActive(true);
                 PauseButton.SetActive(false);
                 Time.timeScale = 0f;
+                if (MainMenu.unlockedLevel > 1) { MainMenu.unlockedLevel--;}         
                 break;
         }
     }
