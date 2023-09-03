@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +17,19 @@ public class WinnerScript : MonoBehaviour
             PauseButton.SetActive(false);
             Lives.SetActive(false);
             StarsCounter();
-            MainMenu.unlockedLevel++;
+
+            int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel");
+            Debug.Log("Level" + SceneManager.GetActiveScene().buildIndex + " stars = " + HealthSystem.health);
+
+            if (unlockedLevel < 4) 
+            { 
+                unlockedLevel++; 
+                PlayerPrefs.SetInt("UnlockedLevel", unlockedLevel);
+                PlayerPrefs.SetInt("Level" + SceneManager.GetActiveScene().buildIndex + " stars", HealthSystem.health);
+                Debug.Log("Level" + SceneManager.GetActiveScene().buildIndex + " stars = " + HealthSystem.health);
+            }
+            
+
         }
     }
 

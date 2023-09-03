@@ -11,9 +11,11 @@ public class CheryyScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D Other)
     {
-        if (Other.tag == "Player")
+        if (Other.tag == "cherry")
         {
-            cherry++;         
+            cherry++;
+            int temp = PlayerPrefs.GetInt("Cherry");
+            PlayerPrefs.SetInt("Cherry", ++temp);
             Destroy(gameObject);
         }
     }

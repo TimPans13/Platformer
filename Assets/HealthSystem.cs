@@ -38,11 +38,23 @@ public class HealthSystem : MonoBehaviour//отвечает за здоровье и механику проиг
                 heart1.SetActive(false);
                 heart2.SetActive(false);
                 heart3.SetActive(false);
-                LoserPanel.SetActive(true);
-                PauseButton.SetActive(false);
-                Time.timeScale = 0f;
-                if (MainMenu.unlockedLevel > 1) { MainMenu.unlockedLevel--;}         
+                LoseGame();
                 break;
+        }
+    }
+
+    void LoseGame()
+    {
+        LoserPanel.SetActive(true);
+        PauseButton.SetActive(false);
+        Time.timeScale = 0f;
+
+        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel");
+        if (unlockedLevel > 1)
+        {
+            unlockedLevel--;
+            PlayerPrefs.SetInt("UnlockedLevel", unlockedLevel);
+            PlayerPrefs.SetInt("Level" + SceneManager.GetActiveScene().buildIndex + " stars", 0);
         }
     }
 }
